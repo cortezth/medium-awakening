@@ -1,0 +1,1171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="tX" sid="885355244453823" static="0" type="number">0</variable>
+        <variable constant="0" name="tY" sid="812761479110080" static="0" type="number">0</variable>
+        <variable constant="0" name="M_VIVO" sid="350236206598403" static="0" type="number">0</variable>
+        <variable constant="0" name="M_MORTO" sid="171037070011327" static="0" type="number">0</variable>
+        <variable constant="0" name="DEAD" sid="918223151393928" static="0" type="number">0</variable>
+        <event-group description="" sid="813851684442177" title="Player">
+            <sub-events>
+                <event-block sid="737264112778674">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="291859324831471" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="649040270891337" type="objPlayer">
+                            <param id="0" name="Instance variable">pY</param>
+                            <param id="1" name="Value">int(Self.Y / 32) * 32</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="910913538196737" type="objPlayer">
+                            <param id="0" name="Instance variable">pX</param>
+                            <param id="1" name="Value">int(Self.X / 32) * 32</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="427460241181635">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="228611050838171" type="sprPlayer">
+                            <param id="0" name="Instance variable">VIVO</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="776181096106787" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="230118526969782" type="sprPlayer">
+                            <param id="0" name="Object">objPlayer</param>
+                            <param id="1" name="Image point (optional)">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="834457649782161">
+                            <conditions>
+                                <condition behavior="Platform" id="2" name="Is on floor" sid="866433369213037" type="objPlayer" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="582180350473351" type="sprPlayer">
+                                    <param id="0" name="Animation">&quot;Idle&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="884752075327443">
+                            <conditions>
+                                <condition behavior="Platform" id="2" inverted="1" name="Is on floor" sid="874452965004666" type="objPlayer" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="670543746709497" type="sprPlayer">
+                                    <param id="0" name="Animation">&quot;Jump&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="201338392765103">
+                                    <conditions>
+                                        <condition id="-4" name="Trigger once while true" sid="178995623804430" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="221664941654082" type="objPlayer">
+                                            <param id="0" name="Instance variable">pY</param>
+                                            <param id="1" name="Value">(int(Self.Y / 32) * 32) + 32</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="122611977902358" type="objPlayer">
+                                            <param id="0" name="Instance variable">pX</param>
+                                            <param id="1" name="Value">(int(Self.X / 32) * 32) + 16</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="687591288085505">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="856127772382265" type="sprPlayer">
+                            <param id="0" name="Instance variable">VIVO</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" sid="996534973637042" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="299113991601361">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="535019196020207" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="112953691468302" type="sprPlayer">
+                                    <param id="0" name="Animation">&quot;PossT&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="115203682461573">
+                            <conditions>
+                                <condition id="4" name="On finished" sid="367310932965010" type="sprPlayer">
+                                    <param id="0" name="Animation">&quot;PossT&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="668198987015369" type="sprPlayer">
+                                    <param id="0" name="Animation">&quot;Poss&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="413298907911798">
+                    <conditions>
+                        <condition behavior="Platform" id="9" name="On landed" sid="420011022211238" type="objPlayer" />
+                        <condition id="-7" name="Compare instance variable" sid="871653704741298" type="objPlayer">
+                            <param id="0" name="Instance variable">pY</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">Self.Y - (32 * 6)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="219621772106040" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="766732503579329" type="System">
+                            <param id="0" name="Object to create">Respawn</param>
+                            <param id="1" name="Layer">&quot;Player&quot;</param>
+                            <param id="2" name="X">objPlayer.pX</param>
+                            <param id="3" name="Y">objPlayer.pY</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="570498879857059" type="sprPlayer">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="821279441633021" title="MORTE">
+            <sub-events>
+                <event-block sid="181763095540978">
+                    <conditions>
+                        <condition id="2" inverted="1" name="Is playing" sid="530372635218850" type="sprPlayer">
+                            <param id="0" name="Animation">&quot;Death&quot;</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="690488654024758" type="sprPlayer">
+                            <param id="0" name="Instance variable">VIVO</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="257676118707224" type="sprPlayer">
+                            <param id="0" name="Animation">&quot;Death&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="989829232272514">
+                    <conditions />
+                    <actions>
+                        <action id="3" name="Set volume" sid="645512028995490" type="Audio">
+                            <param id="0" name="Tag">&quot;VIVO&quot;</param>
+                            <param id="1" name="dB">M_VIVO</param>
+                        </action>
+                        <action id="3" name="Set volume" sid="664167607418501" type="Audio">
+                            <param id="0" name="Tag">&quot;MORTO&quot;</param>
+                            <param id="1" name="dB">M_MORTO</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="532866226481060">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="829611579826027" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="458390107090894" type="Respawn" />
+                        <action id="-10" name="Set value" sid="211874013537650" type="sprGhost">
+                            <param id="0" name="Instance variable">SPEED</param>
+                            <param id="1" name="Value">lerp(Self.SPEED, 0.05, 0.01*dt*60)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="806755315550641">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="221045053066413" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="678435061740094" type="sprPlayer">
+                            <param id="0" name="Instance variable">VIVO</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="828763951297726">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="592448575879206" type="sprGhost">
+                                    <param id="0" name="Instance variable">CARRY</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="558482809101130" type="sprGhost">
+                                    <param id="0" name="Instance variable">SPEED</param>
+                                    <param id="1" name="Value">lerp(Self.SPEED, 0.05, 0.01*dt*60)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="786670601966502">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="544177358299877" type="sprGhost">
+                                    <param id="0" name="Instance variable">CARRY</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="440304811036819" type="sprGhost">
+                                    <param id="0" name="Instance variable">SPEED</param>
+                                    <param id="1" name="Value">lerp(Self.SPEED, 0.01, 0.05*dt*60)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="260493581151088">
+                                    <conditions>
+                                        <condition id="1" name="Is overlapping another object" sid="407400486614477" type="sprGhost">
+                                            <param id="0" name="Object">Respawn</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="760527329900322" type="System">
+                                            <param id="0" name="Variable">DEAD</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="456191621117900">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="608732497371148" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="130972122221478" type="sprGhost">
+                            <param id="0" name="Instance variable">SPEED</param>
+                            <param id="1" name="Value">lerp(Self.SPEED, 0.05, 0.01*dt*60)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="674752218023676">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="850002927800365" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Wait" sid="624602688503073" type="System">
+                                    <param id="0" name="Seconds">2</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="753671347178711" type="Respawn">
+                                    <param id="0" name="Object">sprPlayer</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="429751434850875" type="System">
+                                    <param id="0" name="Variable">DEAD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="119147453369670" title="PLATAFORMA">
+            <sub-events>
+                <event-block sid="694588478891493">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="682365415075228" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="692848347955634" type="Sprite">
+                            <param id="0" name="Instance variable">WARP</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-28" name="Set effect parameter" sid="519550267292159" type="Sprite">
+                            <param id="0" name="Effect">&quot;WarpMask&quot;</param>
+                            <param id="1" name="Parameter index">2</param>
+                            <param id="2" name="Value">Self.WARP</param>
+                        </action>
+                        <action id="-28" name="Set effect parameter" sid="226693978506271" type="Sprite">
+                            <param id="0" name="Effect">&quot;WarpMask&quot;</param>
+                            <param id="1" name="Parameter index">3</param>
+                            <param id="2" name="Value">Self.WARP</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="194684332367991">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="330261160059892" type="Sprite">
+                            <param id="0" name="Instance variable">WARP</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="186955651973021" type="Sprite" />
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="948621967636815">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="194131022873271" type="System">
+                            <param id="0" name="Variable">Maxx</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="713900422138881" type="sprGhost">
+                            <param id="0" name="Object">Sprite</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block disabled="1" sid="706900902632372">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="120927162376545" type="Sprite">
+                                    <param id="0" name="Object">objMovel</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block disabled="1" sid="361984950064595">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="975282180036599" type="objMovel">
+                                            <param id="0" name="Instance variable">SIDE</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block disabled="1" sid="452460749258819">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="619023254948595" type="sprGhost">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="X co-ordinate">objMovel.X + (objMovel.Width/2)</param>
+                                                </condition>
+                                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="770571283538687" type="objMovel">
+                                                    <param id="0" name="Object">PlatformMax</param>
+                                                    <param id="1" name="Offset X">-1</param>
+                                                    <param id="2" name="Offset Y">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="8Direction" id="7" name="Simulate control" sid="762229783182326" type="objMovel">
+                                                    <param id="0" name="Control">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block disabled="1" sid="364706408121969">
+                                            <conditions>
+                                                <condition id="-1" name="Compare X" sid="920324842306676" type="sprGhost">
+                                                    <param id="0" name="Comparison">2</param>
+                                                    <param id="1" name="X co-ordinate">objMovel.X - (objMovel.Width/2)</param>
+                                                </condition>
+                                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="275746707132579" type="objMovel">
+                                                    <param id="0" name="Object">PlatformMax</param>
+                                                    <param id="1" name="Offset X">1</param>
+                                                    <param id="2" name="Offset Y">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="8Direction" id="7" name="Simulate control" sid="908843869271109" type="objMovel">
+                                                    <param id="0" name="Control">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block disabled="1" sid="888424707317488">
+                                    <conditions>
+                                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="147320844923596" type="objMovel">
+                                            <param id="0" name="Instance variable">SIDE</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block disabled="1" sid="800326269814038">
+                                            <conditions>
+                                                <condition id="-2" name="Compare Y" sid="227854170651983" type="sprGhost">
+                                                    <param id="0" name="Comparison">4</param>
+                                                    <param id="1" name="Y co-ordinate">objMovel.Y + (objMovel.Height/2)</param>
+                                                </condition>
+                                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="880490375044874" type="objMovel">
+                                                    <param id="0" name="Object">PlatformMax</param>
+                                                    <param id="1" name="Offset X">0</param>
+                                                    <param id="2" name="Offset Y">-1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="8Direction" id="7" name="Simulate control" sid="235064080234287" type="objMovel">
+                                                    <param id="0" name="Control">2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block disabled="1" sid="320262040114327">
+                                            <conditions>
+                                                <condition id="-2" name="Compare Y" sid="481565759793800" type="sprGhost">
+                                                    <param id="0" name="Comparison">2</param>
+                                                    <param id="1" name="Y co-ordinate">objMovel.Y - (objMovel.Height/2)</param>
+                                                </condition>
+                                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="637370386421880" type="objMovel">
+                                                    <param id="0" name="Object">PlatformMax</param>
+                                                    <param id="1" name="Offset X">0</param>
+                                                    <param id="2" name="Offset Y">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="8Direction" id="7" name="Simulate control" sid="772831674211269" type="objMovel">
+                                                    <param id="0" name="Control">3</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="240614043382261">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="995800395889461" type="objMovel">
+                            <param id="0" name="Object">PlatformMax</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="0" name="Stop" sid="300053003603090" type="objMovel" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="363871603042587">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="877054777533565" type="PlatformMax">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="X co-ordinate">objMovel.X</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="637037512924774">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="956648018035932" type="PlatformMax">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="Y co-ordinate">objMovel.Y</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-2" name="Set Y" sid="353991000222853" type="objMovel">
+                                            <param id="0" name="Y">PlatformMax.Y + 32</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="357403004356100">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="460477504242911" type="PlatformMax">
+                                            <param id="0" name="Comparison">4</param>
+                                            <param id="1" name="Y co-ordinate">objMovel.Y</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-2" name="Set Y" sid="486357066813751" type="objMovel">
+                                            <param id="0" name="Y">PlatformMax.Y - 32</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="100259866023439">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="259942726280648" type="PlatformMax">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Y co-ordinate">objMovel.Y</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="119000738583472">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="899764829756610" type="PlatformMax">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="X co-ordinate">objMovel.X</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-1" name="Set X" sid="633408621342478" type="objMovel">
+                                            <param id="0" name="X">PlatformMax.X + 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="409820724830260">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="824164435380177" type="PlatformMax">
+                                            <param id="0" name="Comparison">4</param>
+                                            <param id="1" name="X co-ordinate">objMovel.X</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-1" name="Set X" sid="849332936177317" type="objMovel">
+                                            <param id="0" name="X">PlatformMax.X - 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="106244850617691" title="GHOST">
+            <sub-events>
+                <event-block sid="605232656954675">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="314278198877607" type="System">
+                            <param id="0" name="First value">sprGhost.TSX</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">Touch.AbsoluteX</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="429061919983504" type="sprGhost">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="199780811895337">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="779497608001405" type="System">
+                            <param id="0" name="First value">sprGhost.TSX</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">Touch.AbsoluteX</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="330009453359500" type="sprGhost">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="721590290691556">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="604030513211409" type="System">
+                            <param id="0" name="First value">distance(sprGhost.X, sprGhost.Y, tX, tY)</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">16</param>
+                        </condition>
+                        <condition id="2" name="Is in touch" sid="538160151397163" type="Touch" />
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="561672072520393" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="935201955110427" type="objGhost">
+                            <param id="0" name="Angle">angle(sprGhost.TSX, sprGhost.TSY, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="549345272883300" type="sprGhost">
+                            <param id="0" name="Animation">&quot;Run&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Bullet" id="0" name="Set speed" sid="455289575115417" type="objGhost">
+                            <param id="0" name="Speed">100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="457626155528680">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="180430375330698" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="259574236380515" type="sprGhost">
+                            <param id="0" name="Animation">&quot;Idle&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Bullet" id="0" name="Set speed" sid="950674991687158" type="objGhost">
+                            <param id="0" name="Speed">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="903215005868577">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="978149656959032" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="447194515135002" type="sprGhost">
+                            <param id="0" name="Opacity">lerp(Self.Opacity, 0, 0.1*dt*60)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="699507599167659">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="412352439645409" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="961041603143806" type="sprGhost">
+                            <param id="0" name="Opacity">lerp(Self.Opacity, 100, 0.1*dt*60)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="782152090160575" title="MUSICA">
+            <sub-events>
+                <event-block sid="460974079707965">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="720046451725978" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="591602594074233" type="Audio">
+                            <param id="0" name="Audio file">Gameplay_MediumCalling</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;VIVO&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="887178049075954" type="Audio">
+                            <param id="0" name="Audio file">Gameplay_MediumCalling_dead</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">-40</param>
+                            <param id="1" name="Tag (optional)">&quot;MORTO&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="822846394273714">
+                    <conditions>
+                        <condition id="0" name="On ended" sid="145230602120639" type="Audio">
+                            <param id="0" name="Tag">&quot;VIVO&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="835913325799301">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="848032495806854" type="System">
+                                    <param id="0" name="Variable">DEAD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="389743759522253" type="Audio">
+                                    <param id="0" name="Audio file">Gameplay_MediumCalling</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;VIVO&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="607476507440578" type="Audio">
+                                    <param id="0" name="Audio file">Gameplay_MediumCalling_dead</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-40</param>
+                                    <param id="1" name="Tag (optional)">&quot;MORTO&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="831889444264984">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="463681438009200" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="495788098057537" type="Audio">
+                                    <param id="0" name="Audio file">Gameplay_MediumCalling</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-40</param>
+                                    <param id="1" name="Tag (optional)">&quot;VIVO&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="861729814633629" type="Audio">
+                                    <param id="0" name="Audio file">Gameplay_MediumCalling_dead</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;MORTO&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="860137931756681">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="889619290914028" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="988706428524706">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="546268002908385" type="System">
+                                    <param id="0" name="Variable">M_MORTO</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">-40</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="647715902150052" type="System">
+                                    <param id="0" name="Variable">M_MORTO</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="752637591564550">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="776146749188016" type="System">
+                                    <param id="0" name="Variable">M_VIVO</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="618770635782492" type="System">
+                                    <param id="0" name="Variable">M_VIVO</param>
+                                    <param id="1" name="Value">4</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block any="1" sid="529110791549807">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="551378547683867" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="115070674789405" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="526274214857800">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="110542235049615" type="System">
+                                    <param id="0" name="Variable">M_VIVO</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">-40</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="948614221553045" type="System">
+                                    <param id="0" name="Variable">M_VIVO</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="597855125416364">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="654983695436097" type="System">
+                                    <param id="0" name="Variable">M_MORTO</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="611705289497119" type="System">
+                                    <param id="0" name="Variable">M_MORTO</param>
+                                    <param id="1" name="Value">4</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <variable constant="0" name="DCC" sid="101893092980130" static="0" type="number">5</variable>
+        <variable constant="0" name="Maxx" sid="839119185275390" static="0" type="number">20</variable>
+        <event-group description="" sid="817456229552815" title="POSS">
+            <sub-events>
+                <event-block sid="707438534147303">
+                    <conditions>
+                        <condition behavior="Platform" id="2" inverted="1" name="Is on floor" sid="251347064607576" type="objPlayer" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="271950297075264">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="810478492352364" type="objPlayer">
+                                    <param id="0" name="Instance variable">JUMP_LEFT</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="740088379250472" type="objPlayer">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="350955891547733" type="sprPlayer">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="487510604424996" type="sprPlayer">
+                                    <param id="0" name="Angle">sprPlayer.Angle - 10</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="346561275643012">
+                                    <conditions>
+                                        <condition behavior="Platform" id="10" name="Is by wall" sid="954611588329041" type="objPlayer">
+                                            <param id="0" name="Side">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="160866628903797" type="objPlayer">
+                                            <param id="0" name="Instance variable">JUMP_LEFT</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="463668052888073">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="458578940437556" type="objPlayer">
+                                    <param id="0" name="Instance variable">JUMP_LEFT</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="748319228043652" type="objPlayer">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="520843860335728" type="sprPlayer">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="425192861617544" type="sprPlayer">
+                                    <param id="0" name="Angle">sprPlayer.Angle + 10</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="149401670851071">
+                                    <conditions>
+                                        <condition behavior="Platform" id="10" name="Is by wall" sid="584611871127632" type="objPlayer">
+                                            <param id="0" name="Side">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="194277548607477" type="objPlayer">
+                                            <param id="0" name="Instance variable">JUMP_LEFT</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="396466881536978">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="404847493331604" type="objPlayer" />
+                        <condition id="-8" name="Is boolean instance variable set" sid="154317249092380" type="sprPlayer">
+                            <param id="0" name="Instance variable">VIVO</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-8" name="Set angle" sid="594481463302179" type="sprPlayer">
+                            <param id="0" name="Angle">anglelerp(Self.Angle, 0, 0.8*dt*60)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="188328479907630">
+                    <conditions>
+                        <condition id="2" name="Is in touch" sid="281365585956650" type="Touch" />
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="409998933866039" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="755429658234656" type="System">
+                            <param id="0" name="Variable">tX</param>
+                            <param id="1" name="Value">Touch.X</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="999426875717280" type="System">
+                            <param id="0" name="Variable">tY</param>
+                            <param id="1" name="Value">Touch.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="817881571512130">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="242755045593213" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="663404621853511" type="System">
+                            <param id="0" name="Variable">tX</param>
+                            <param id="1" name="Value">sprGhost.X</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="892961468922908" type="System">
+                            <param id="0" name="Variable">tY</param>
+                            <param id="1" name="Value">sprGhost.Y</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="532181719949876" type="AnalogMov" />
+                        <action id="-9" name="Destroy" sid="441776439920382" type="AnalogBase" />
+                    </actions>
+                </event-block>
+                <event-block sid="498463557713860">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="531765293826844" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="591116503899581" type="sprGhost">
+                            <param id="0" name="X">lerp(Self.X, objPlayer.X, Self.SPEED*dt*60)</param>
+                            <param id="1" name="Y">lerp(Self.Y, objPlayer.Y, Self.SPEED*dt*60)</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="618370176399064" type="Seta">
+                            <param id="0" name="Object">sprGhost</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="572330096213364" type="AnalogBase" />
+                        <action id="-9" name="Destroy" sid="174388499175878" type="AnalogMov" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="989831628290751">
+                            <conditions>
+                                <condition id="0" name="On any touch start" sid="286616566676442" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="746160227210576" type="sprGhost">
+                                    <param id="0" name="Instance variable">TSX</param>
+                                    <param id="1" name="Value">Touch.X</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="150489271455591" type="sprGhost">
+                                    <param id="0" name="Instance variable">TSY</param>
+                                    <param id="1" name="Value">Touch.Y</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="408660582040839" type="sprGhost">
+                                    <param id="0" name="Instance variable">CHARGE</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="989814296907004">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="187110014994650" type="Touch" />
+                                <condition id="-8" name="Is boolean instance variable set" sid="858230448944119" type="sprGhost">
+                                    <param id="0" name="Instance variable">CHARGE</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="665833310882214" type="Seta">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="686141989578758">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="758650608770668" type="System">
+                                            <param id="0" name="First value">angle(sprGhost.TSX, sprGhost.TSY, Touch.X, Touch.Y)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">135</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="216424484005151" type="System">
+                                            <param id="0" name="First value">angle(sprGhost.TSX, sprGhost.TSY, Touch.X, Touch.Y)</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">45</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-8" name="Set angle" sid="559593715674716" type="Seta">
+                                            <param id="0" name="Angle">angle(sprGhost.TSX, sprGhost.TSY, Touch.X, Touch.Y) - 180</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="720060813511236">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="394980148026318" type="System">
+                                            <param id="0" name="First value">distance(sprGhost.TSX, sprGhost.TSY, Touch.X, Touch.Y)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">64</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="696330176061375" type="System">
+                                            <param id="0" name="Variable">Maxx</param>
+                                            <param id="1" name="Value">distance(sprGhost.TSX, sprGhost.TSY, Touch.X, Touch.Y) / 6</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="186092893282013" type="Seta">
+                                            <param id="0" name="Width">distance(sprGhost.TSX, sprGhost.TSY, Touch.X, Touch.Y) </param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="206320891133190">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="504936072228708" type="Touch" />
+                                <condition id="-8" name="Is boolean instance variable set" sid="489533754736664" type="sprGhost">
+                                    <param id="0" name="Instance variable">CHARGE</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set position to another object" sid="761334434829796" type="objGhost">
+                                    <param id="0" name="Object">sprGhost</param>
+                                    <param id="1" name="Image point (optional)">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="735424228356933" type="System">
+                                    <param id="0" name="Variable">tX</param>
+                                    <param id="1" name="Value">sprGhost.X</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="945917620024225" type="System">
+                                    <param id="0" name="Variable">tY</param>
+                                    <param id="1" name="Value">sprGhost.Y</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="461185911698081" type="sprGhost">
+                                    <param id="0" name="Instance variable">POSS</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="327817108751655" type="sprGhost">
+                                    <param id="0" name="Instance variable">CHARGE</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action behavior="Platform" id="4" name="Set jump strength" sid="530186181845622" type="objPlayer">
+                                    <param id="0" name="Jump strength">60 * Maxx</param>
+                                </action>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="729057101324449" type="objPlayer">
+                                    <param id="0" name="Control">2</param>
+                                </action>
+                                <action behavior="Platform" id="1" name="Set max speed" sid="147234413781012" type="objPlayer">
+                                    <param id="0" name="Max Speed">abs(Seta.Angle - 270) * Maxx</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="569010643870508">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="209570824099144" type="System">
+                                            <param id="0" name="First value">Seta.Angle</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">270</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="341175038624454" type="objPlayer">
+                                            <param id="0" name="Instance variable">JUMP_LEFT</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="986004784795110">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="899900686161900" type="System">
+                                            <param id="0" name="First value">Seta.Angle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">270</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="191057038923924" type="objPlayer">
+                                            <param id="0" name="Instance variable">JUMP_LEFT</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="827026620866505">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="190095581659029" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="679210730587099" type="sprGhost">
+                            <param id="0" name="X">lerp(Self.X, objGhost.X, Self.SPEED*dt*60)</param>
+                            <param id="1" name="Y">lerp(Self.Y, objGhost.Y, Self.SPEED*dt*60)</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="387182937609668" type="Seta">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="599124764699159" type="AnalogMov">
+                            <param id="0" name="Angle">angle(sprGhost.TSX, sprGhost.TSY, Touch.AbsoluteX, Touch.AbsoluteY)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="125483894159440">
+                            <conditions>
+                                <condition id="0" name="On any touch start" sid="776862647624974" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="989324550989084" type="sprGhost">
+                                    <param id="0" name="Instance variable">TSX</param>
+                                    <param id="1" name="Value">Touch.AbsoluteX</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="826149361105654" type="sprGhost">
+                                    <param id="0" name="Instance variable">TSY</param>
+                                    <param id="1" name="Value">Touch.AbsoluteY</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="160015509500789" type="System">
+                                    <param id="0" name="Object to create">AnalogBase</param>
+                                    <param id="1" name="Layer">&quot;HUD&quot;</param>
+                                    <param id="2" name="X">Touch.AbsoluteX</param>
+                                    <param id="3" name="Y">Touch.AbsoluteY</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="114967642520579" type="System">
+                                    <param id="0" name="Object to create">AnalogMov</param>
+                                    <param id="1" name="Layer">&quot;HUD&quot;</param>
+                                    <param id="2" name="X">Touch.AbsoluteX</param>
+                                    <param id="3" name="Y">Touch.AbsoluteY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="946341748480404">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="559610057422964" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="702985067656571" type="AnalogBase" />
+                                <action id="-9" name="Destroy" sid="633656994858354" type="AnalogMov" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="995927210422239">
+                    <conditions />
+                    <actions>
+                        <action id="-7" name="Scroll to position" sid="477851534941047" type="System">
+                            <param id="0" name="X">lerp(scrollx,(clamp(sprGhost.X, (OriginalWindowWidth/2),LayoutWidth-(OriginalWindowWidth/2))),0.05*60*dt)</param>
+                            <param id="1" name="Y">lerp(scrolly,(clamp(sprGhost.Y,(OriginalWindowHeight/2),LayoutHeight-(OriginalWindowHeight/2))),0.05*60*dt)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="943478636081772">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="761798668467524" type="sprGhost">
+                            <param id="0" name="Object">objPlayer</param>
+                        </condition>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="575932648814906" type="objPlayer" />
+                        <condition id="-14" name="Compare variable" sid="861915570409238" type="System">
+                            <param id="0" name="Variable">DEAD</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="933366203821624" type="sprGhost">
+                            <param id="0" name="Instance variable">POSS</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
